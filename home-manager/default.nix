@@ -94,7 +94,16 @@ in {
     };
 
     extraConfig = {
-      color.ui = true;
+      color = {
+        ui = true;
+        status = "auto";
+        diff = "auto";
+        branch = "auto";
+      };
+      push = {
+        default = "current";
+        autoSetupRemote = true;
+      };
       diff.colorMoved = "zebra";
       fetch.prune = true;
       github.user = "KensoDev";
