@@ -35,12 +35,6 @@ in {
     ];
   };
 
-  fileSystems."/mnt/nfs/production" = {
-    device = "192.168.3.7:/mnt/data";
-    fsType = "nfs";
-    options = [ "nfsvers=4.2" "noauto" "x-systemd.automount" ];
-  };
-
   fonts = {
     fontconfig = {
       enable = true;
@@ -69,14 +63,6 @@ in {
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  networking = {
-    firewall.enable = false;
-    hostName = "erikreinert-nixos";
-    interfaces.ens33.useDHCP = true;
-    networkmanager.enable = true;
-    useDHCP = false;
-  };
-
   nix = nix;
 
   nixpkgs = nixpkgs;
@@ -92,14 +78,6 @@ in {
   };
 
   services = {
-    k3s = {
-      enable = true;
-      extraFlags = toString [
-        "--container-runtime-endpoint unix:///run/containerd/containerd.sock"
-      ];
-      role = "server";
-    };
-
     logind.extraConfig = ''
       RuntimeDirectorySize=20G
     '';
@@ -112,34 +90,6 @@ in {
 
     picom.enable = true;
     twingate.enable = true;
-
-    xserver = {
-      enable = true;
-      layout = "us";
-      videoDrivers = [
-        "vmware"
-      ]; # Fixes https://github.com/NixOS/nixpkgs/commit/5157246aa4fdcbef7796ef9914c3a7e630c838ef
-
-      desktopManager = {
-        xterm.enable = false;
-        wallpaper.mode = "fill";
-      };
-
-      displayManager = {
-        autoLogin = {
-          enable = true;
-          user = "erikreinert";
-        };
-        defaultSession = "none+i3";
-        lightdm.enable = true;
-      };
-
-      windowManager.i3 = {
-        enable = true;
-        package = pkgs.i3-gaps;
-        extraPackages = with pkgs; [ i3status i3lock i3blocks ];
-      };
-    };
   };
 
   sound.enable = true;
@@ -150,17 +100,6 @@ in {
 
   users = {
     mutableUsers = false;
-
-    users.erikreinert = {
-      extraGroups = [ "audio" "docker" "wheel" ];
-      hashedPassword = "";
-      home = "/home/erikreinert";
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJs7Z5a/QPZPaly3N79Ns4qL73k9XMACmqH8H03gHMXf" # iPad
-      ];
-      shell = pkgs.zsh;
-    };
   };
 
   virtualisation = {
@@ -185,7 +124,5 @@ in {
       enable = true;
       extraPackages = with pkgs; [ zfs ];
     };
-
-    vmware.guest.enable = true;
   };
 }
