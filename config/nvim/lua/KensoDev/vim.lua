@@ -40,13 +40,14 @@ local function set_keymaps()
     local map = vim.api.nvim_set_keymap
     local options = { noremap = false }
 
-    map('n', '<leader>h', '<CMD>wincmd h<CR>', options)
-    map('n', '<leader>j', '<CMD>wincmd j<CR>', options)
-    map('n', '<leader>k', '<CMD>wincmd k<CR>', options)
-    map('n', '<leader>l', '<CMD>wincmd l<CR>', options)
+    map("n", "<C-h>", "<cmd>lua require('KensoDev.utils').WinMove('h')<CR>", options)
+    map("n", "<C-j>", "<cmd>lua require('KensoDev.utils').WinMove('j')<CR>", options)
+    map("n", "<C-k>", "<cmd>lua require('KensoDev.utils').WinMove('k')<CR>", options)
+    map("n", "<C-l>", "<cmd>lua require('KensoDev.utils').WinMove('l')<CR>", options)
+    map("n", "<leader>p", ":NERDTreeFind<CR>", options)
 
     --Control-N to stop search
-    map('n', '<C-n>',  ':silent noh<CR>', options)
+    map("n", "<C-n>",  ":silent noh<CR>", options)
 end
 
 local function init()

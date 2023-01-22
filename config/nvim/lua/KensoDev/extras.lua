@@ -1,3 +1,4 @@
+
 local function setup_extras()
   require("gitsigns").setup()
 

@@ -45,6 +45,68 @@ in {
     goPath = "Development/language/go";
   };
 
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window = {
+        dimensions = {
+          columns = 100;
+          lines = 85;
+        };
+        padding = {
+          x = 5;
+          y = 5;
+        };
+        dynamic_padding = false;
+
+        decorations = "buttonless";
+
+        startup_mode = "windowed";
+      };
+
+      scrolling = {
+        history = 0;
+        multiplier = 3;
+
+      };
+
+      font = {
+        size = 18;
+
+        bold = {
+          style = "Retina";
+          family = "FuraCode Nerd Font";
+        };
+
+        italic = {
+          style = "Retina";
+          family = "FuraCode Nerd Font";
+        };
+
+        normal = {
+          style = "Medium";
+          family = "FuraCode Nerd Font";
+        };
+
+        offset = {
+          y = 0;
+          x = 0;
+        };
+      };
+
+      offset = {                            # Positioning
+        x = -1;
+        y = 0;
+      };
+
+      glyff_offset = {
+        x = 0;
+        y = 0;
+      };
+    };
+  };
+
   programs.git = {
     delta = {
       enable = true;
@@ -113,70 +175,6 @@ in {
     };
   };
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      window = {
-        dimensions = {
-          columns = 100;
-          lines = 85;
-        };
-        padding = {
-          x = 5;
-          y = 5;
-        };
-        dynamic_padding = false;
-
-        decorations = "buttonless";
-
-        startup_mode = "windowed";
-      };
-
-      scrolling = {
-        history = 0;
-        multiplier = 3;
-
-      };
-
-      font = {
-        size = 18;
-
-        bold = {
-          style = "Retina";
-          family = "FuraCode Nerd Font";
-        };
-
-        italic = {
-          style = "Retina";
-          family = "FuraCode Nerd Font";
-        };
-
-        normal = {
-          style = "Medium";
-          family = "FuraCode Nerd Font";
-        };
-
-        offset = {
-          y = 0;
-          x = 0;
-        };
-      };
-
-      offset = {                            # Positioning
-        x = -1;
-        y = 0;
-      };
-
-      glyff_offset = {
-        x = 0;
-        y = 0;
-      };
-    };
-
-
-  };
-
-
   programs.lazygit = {
     enable = true;
     settings = {
@@ -237,9 +235,10 @@ in {
       vimPlugins.nerdcommenter
       vimPlugins.nvim-treesitter-context
       vimPlugins.nvim-web-devicons
+      vimPlugins.nerdtree
 
       # configuration
-      customVim.thealtf4stream
+      customVim.kensodev
     ];
 
     extraConfig = ''

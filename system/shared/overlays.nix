@@ -1,6 +1,6 @@
 self: super: {
   customVim = with self; {
-    thealtf4stream = pkgs.vimUtils.buildVimPlugin {
+    kensodev = pkgs.vimUtils.buildVimPlugin {
       name = "KensoDev";
       src = ../../config/nvim;
     };
