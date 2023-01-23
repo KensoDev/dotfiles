@@ -25,6 +25,8 @@ with pkgs; [
   yarn
   tree
   hub
+  docker
+  docker-compose
 
   # language servers
   gopls
