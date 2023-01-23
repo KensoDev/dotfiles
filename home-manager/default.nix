@@ -199,7 +199,6 @@
     };
 
     shellAliases = {
-
       cat = "bat";
       fetch = "git fetch --all --jobs=4 --progress --prune";
       ll = "n -Hde";
@@ -208,6 +207,7 @@
       secrets = ''doppler run --project "$(whoami)"'';
       update = "fetch && rebase";
       wt = "git worktree";
+      git = "hub";
     };
 
     plugins = [{
