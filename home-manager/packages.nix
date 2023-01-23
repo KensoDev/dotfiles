@@ -15,8 +15,6 @@ with pkgs; [
   kubectl
   lazydocker
   nodejs
-  powershell
-  pulumi-bin
   python3Full
   python310Packages.pip
   ripgrep
@@ -26,6 +24,7 @@ with pkgs; [
   virtualenv
   yarn
   tree
+  hub
 
   # language servers
   gopls
