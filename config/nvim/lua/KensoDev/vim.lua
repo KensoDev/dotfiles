@@ -45,6 +45,7 @@ local function set_keymaps()
     map('n', '<C-j>', '<cmd>lua require("KensoDev.utils").WinMove("j")<CR>', options)
     map('n', '<C-l>', '<cmd>lua require("KensoDev.utils").WinMove("l")<CR>', options)
     map('n', '<leader>p', ':NERDTreeFind<CR>', options)
+    map('n', '<leader>v', ':vsplit<CR>', options)
 
     --Control-N to stop search
     map("n", "<C-n>",  ":silent noh<CR>", options)
