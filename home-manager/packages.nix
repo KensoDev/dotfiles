@@ -27,6 +27,7 @@ with pkgs; [
   hub
   docker
   docker-compose
+  kubernetes-helm-wrapped
 
   # language servers
   gopls
