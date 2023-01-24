@@ -15,19 +15,32 @@ with pkgs; [
   kubectl
   lazydocker
   nodejs
-  python3Full
-  python310Packages.pip
   ripgrep
   rustc
   rustfmt
   terraform
   virtualenv
-  yarn
-  tree
-  hub
   docker
   docker-compose
   kubernetes-helm-wrapped
+  bcompare
+
+  #python
+  python3Full
+  python310Packages.pip
+  customPythonPackages.botoenv
+
+  # javascript
+  yarn
+
+  # Shell utilities
+  tree
+
+  # git
+  hub
+
+  # Custom programs
+  hugo
 
   # language servers
   gopls
