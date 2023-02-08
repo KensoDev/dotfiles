@@ -13,6 +13,7 @@ with pkgs; [
   jq
   just
   kubectl
+  kubectx
   lazydocker
   nodejs
   ripgrep
@@ -30,6 +31,12 @@ with pkgs; [
   python310Packages.pip
   customPythonPackages.botoenv
 
+  #python2
+  python2
+
+  # go
+  go
+
   # javascript
   yarn
 
@@ -41,6 +48,12 @@ with pkgs; [
 
   # Custom programs
   hugo
+
+  # Custom Bin
+  customBin.gong
+
+  # other
+  postgresql_15
 
   # language servers
   gopls

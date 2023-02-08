@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-
   imports = [
     ./programs/git.nix
     ./programs/tmux.nix

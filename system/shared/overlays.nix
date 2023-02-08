@@ -34,6 +34,22 @@ self: super: {
     };
   };
 
+  customBin = with self; {
+    gong = pkgs.stdenv.mkDerivation {
+      name = "gong";
+      src = pkgs.fetchurl {
+        url = "https://github.com/KensoDev/gong/releases/download/1.7.0/gong_darwin_amd64";
+        sha256 = "1gdgwj700sm0xvgc7iga45ayxc40bx9gkrkcy933szccvi43nk44";
+      };
+      phases = ["installPhase" "patchPhase"];
+      installPhase = ''
+        mkdir -p $out/bin
+        cp $src $out/bin/gong
+        chmod +x $out/bin/gong
+      '';
+    };
+  };
+
   customBat = with self; {
     catppuccin = pkgs.fetchFromGitHub {
       owner = "catppuccin";
