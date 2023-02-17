@@ -31,9 +31,6 @@ with pkgs; [
   python310Packages.pip
   customPythonPackages.botoenv
 
-  #python2
-  python2
-
   # go
   go
 
