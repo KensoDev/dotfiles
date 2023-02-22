@@ -34,7 +34,7 @@
         };
     in {
       darwinConfigurations = {
-        macbookpro-work = darwinSystem "avizurel";
+        macbookpro-work = darwinSystem "azurel";
       };
 
       nixosConfigurations = {
