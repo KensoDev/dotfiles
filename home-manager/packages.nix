@@ -48,6 +48,7 @@ with pkgs; [
 
   # Custom Bin
   customBin.gong
+  customBin.reattach-to-user-namespace
 
   # other
   postgresql_15
