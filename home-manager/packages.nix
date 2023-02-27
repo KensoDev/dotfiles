@@ -17,6 +17,7 @@ with pkgs; [
   lazydocker
   nodejs
   ripgrep
+  ack
   rustc
   rustfmt
   terraform
