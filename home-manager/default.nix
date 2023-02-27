@@ -200,6 +200,7 @@
     shellAliases = {
       cat = "bat";
       fetch = "git fetch --all --jobs=4 --progress --prune";
+      git-sync = "git stash;fetch;git checkout master; git reset --hard origin/master";
       ll = "n -Hde";
       pull = "git pull --autostash --jobs=4 --summary origin";
       rebase = "git rebase --autostash --stat";
