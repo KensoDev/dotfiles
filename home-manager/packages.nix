@@ -50,6 +50,8 @@ with pkgs; [
   customBin.gong
   customBin.reattach-to-user-namespace
 
+  circleci-cli
+
   # other
   postgresql_15
 

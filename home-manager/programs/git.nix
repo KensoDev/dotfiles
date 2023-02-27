@@ -60,7 +60,25 @@
         default = "current";
         autoSetupRemote = true;
       };
-      diff.colorMoved = "zebra";
+      mergetool = {
+        diffmerge = {
+          cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\"";
+          trustExitCode = "true";
+          keepBackup = "false";
+        };
+      };
+      merge = {
+        tool = "diffmerge";
+      };
+      difftool = {
+        diffmerge = {
+          cmd = "diffmerge \"$LOCAL\" \"$REMOTE\"";
+        };
+      };
+      diff = {
+        tool = "diffmerge";
+        colorMoved = "zebra";
+      };
       fetch.prune = true;
       github.user = "KensoDev";
       init.defaultBranch = "main";
