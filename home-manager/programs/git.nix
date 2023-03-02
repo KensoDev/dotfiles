@@ -2,6 +2,14 @@
 
 {
   programs.git = {
+    ignores = [
+      "venv"
+      "backend.tf"
+      ":w"
+      ":W"
+      "*.plan"
+      "terraform.tfvars"
+    ];
     delta = {
       enable = true;
       options = {
