@@ -9,6 +9,10 @@
       ":W"
       "*.plan"
       "terraform.tfvars"
+      ".env"
+      ".DS_Store"
+      "*.orig"
+      "*.swp"
     ];
     delta = {
       enable = true;
