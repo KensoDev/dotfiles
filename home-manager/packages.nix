@@ -26,6 +26,7 @@ with pkgs; [
   docker-compose
   kubernetes-helm-wrapped
   bcompare
+  httpie
 
   #python
   python3Full
