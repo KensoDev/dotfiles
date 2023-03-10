@@ -208,6 +208,8 @@
       update = "fetch && rebase";
       wt = "git worktree";
       git = "hub";
+      dev = "nix develop . -c $SHELL";
+      develop = "nix develop . -c $SHELL";
     };
 
     plugins = [{

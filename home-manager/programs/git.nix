@@ -13,8 +13,6 @@
       ".DS_Store"
       "*.orig"
       "*.swp"
-      "flake.nix"
-      "flake.lock"
     ];
     delta = {
       enable = true;
