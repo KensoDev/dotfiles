@@ -152,10 +152,10 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 ## Trackpad
 
 # Enable tap to click (Trackpad), also for login menu.
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-sudo defaults write com.apple.AppleMultitouchTrackpad Clicking 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
+sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 0
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 0
+sudo defaults write com.apple.AppleMultitouchTrackpad Clicking 5
 
 
 ## Flags
