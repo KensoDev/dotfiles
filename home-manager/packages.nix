@@ -27,6 +27,7 @@ with pkgs; [
   kubernetes-helm-wrapped
   bcompare
   httpie
+  ngrok
 
   #python
   python3Full
