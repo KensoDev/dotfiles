@@ -5,7 +5,6 @@ end
 local function set_vim_o()
     local settings = {
         clipboard = 'unnamedplus',
-        colorcolumn = 80,
         expandtab = true,
         scrolloff = 3,
         shiftwidth = 4,

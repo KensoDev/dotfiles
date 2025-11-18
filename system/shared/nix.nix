@@ -11,7 +11,5 @@
     options = "--delete-older-than 7d";
   };
 
-  package = pkgs.nixUnstable;
-
   settings = { auto-optimise-store = true; };
 }

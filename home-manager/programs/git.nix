@@ -61,6 +61,13 @@
       st = "status";
     };
 
+    includes = [
+      {
+        condition = "gitdir:~/Code/lettuce/";
+        path = "~/.gitconfig-lettuce";
+      }
+    ];
+
     extraConfig = {
       color = {
         ui = true;

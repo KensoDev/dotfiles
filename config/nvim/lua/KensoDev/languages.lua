@@ -47,7 +47,17 @@ local function on_attach(client, bufnr)
 end
 
 local function make_config()
-    local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+	if ok then
+	  capabilities = cmp_lsp.default_capabilities(capabilities)
+	else
+	  vim.schedule(function()
+	    vim.notify("cmp_nvim_lsp not found; using base LSP capabilities", vim.log.levels.WARN)
+	  end)
+	end
+
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -70,13 +80,10 @@ local function setup_languages()
         "cssls",
         "dockerls",
         "gopls",
-        "graphql",
         "hls",
         "html",
         "jsonls",
         "nil_ls",
-        "prismals",
-        "pyright",
         "rust_analyzer",
         "sumneko_lua",
         "terraformls",

@@ -3,36 +3,33 @@
 with pkgs; [
   # programs
   awscli2
-  azure-cli
-  cargo
   fd
   gcc
-  ghc
   google-cloud-sdk
-  jetbrains.datagrip
   jq
   just
-  kubectl
-  kubectx
-  lazydocker
   nodejs
   ripgrep
   ack
-  rustc
-  rustfmt
   terraform
+  packer
   virtualenv
   docker
   docker-compose
-  kubernetes-helm-wrapped
   bcompare
   httpie
   ngrok
 
+  ffmpeg
+  yt-dlp
+
+  # git
+  hub
+
   #python
-  python3Full
-  python310Packages.pip
-  customPythonPackages.botoenv
+  python312
+  python312Packages.pip
+  python312Packages.uv
 
   # go
   go
@@ -43,17 +40,10 @@ with pkgs; [
   # Shell utilities
   tree
 
-  # git
-  hub
-
   # Custom programs
   hugo
 
-  # Custom Bin
-  customBin.gong
   customBin.reattach-to-user-namespace
-
-  circleci-cli
 
   # other
   postgresql_15
@@ -61,16 +51,14 @@ with pkgs; [
   # language servers
   gopls
   nil
-  nodePackages."@prisma/language-server"
+
   nodePackages."bash-language-server"
   nodePackages."dockerfile-language-server-nodejs"
   nodePackages."graphql-language-service-cli"
-  nodePackages."pyright"
   nodePackages."typescript"
   nodePackages."typescript-language-server"
   nodePackages."vscode-langservers-extracted"
   nodePackages."yaml-language-server"
   rust-analyzer
-  sumneko-lua-language-server
   terraform-ls
 ]

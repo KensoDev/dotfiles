@@ -1,39 +1,4 @@
 self: super: {
-  customVim = with self; {
-    kensodev = pkgs.vimUtils.buildVimPlugin {
-      name = "KensoDev";
-      src = ../../config/nvim;
-    };
-
-
-    vim-just = pkgs.vimUtils.buildVimPlugin {
-      name = "vim-just";
-      src = pkgs.fetchFromGitHub {
-        owner = "NoahTheDuke";
-        repo = "vim-just";
-        rev = "838c9096d4c5d64d1000a6442a358746324c2123";
-        sha256 = "sha256-DSC47z2wOEXvo2kGO5JtmR3hyHPiYXrkX7MgtagV5h4=";
-      };
-    };
-  };
-
-  customPythonPackages = with self; {
-    botoenv = pkgs.python310Packages.buildPythonPackage {
-      pname = "botoenv";
-      version = "0.2.0";
-
-      src = pkgs.python310Packages.fetchPypi {
-        pname = "botoenv";
-        version = "0.2.0";
-        hash = "sha256-y0Te9LQ8rPATgwYuvHTn8dTmCMoLvHH1Lioiw7poosA=";
-      };
-
-      propagatedBuildInputs = [ 
-        pkgs.python310Packages.botocore 
-      ];
-    };
-  };
-
   customBin = with self; {
     gong = pkgs.stdenv.mkDerivation {
       name = "gong";

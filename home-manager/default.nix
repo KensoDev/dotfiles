@@ -5,14 +5,10 @@
     ./programs/git.nix
     ./programs/tmux.nix
   ];
+
   #---------------------------------------------------------------------
   # home
   #---------------------------------------------------------------------
-
-  home.file.".config/nvim/after/ftplugin/markdown.vim".text = ''
-    setlocal wrap
-  '';
-
   home.packages = (import ./packages.nix) { inherit pkgs; };
 
   home.sessionVariables = {
@@ -35,10 +31,6 @@
   programs.bat = {
     enable = true;
     config = { theme = "catppuccin"; };
-    themes = {
-      catppuccin = builtins.readFile
-        (pkgs.customBat.catppuccin + "/Catppuccin-macchiato.tmTheme");
-    };
   };
 
   programs.bottom.enable = true;
@@ -47,7 +39,6 @@
     enable = true;
     goPath = "Development/language/go";
   };
-
 
   programs.alacritty = {
     enable = true;
@@ -75,7 +66,7 @@
       };
 
       font = {
-        size = 18;
+        size = 24;
 
         bold = {
           style = "Retina";
@@ -125,11 +116,11 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    package = pkgs.neovim;
 
+    
     plugins = with pkgs; [
       # languages
-      customVim.vim-just
       vimPlugins.nvim-lspconfig
       vimPlugins.vim-nix
       vimPlugins.vim-prisma
@@ -171,25 +162,21 @@
       vimPlugins.nvim-treesitter-context
       vimPlugins.nvim-web-devicons
       vimPlugins.nerdtree
-
-      # configuration
-      customVim.kensodev
     ];
+  };
 
-    extraConfig = ''
-      lua << EOF
-        require 'KensoDev'.init()
-      EOF
-    '';
+  xdg.configFile."nvim" = {
+    source = ../config/nvim;
+    recursive = true;
+    force = true; # optional — overwrites existing ~/.config/nvim
   };
 
   programs.nnn.enable = true;
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
 
     oh-my-zsh = {
       enable = true;
@@ -201,6 +188,7 @@
       cat = "bat";
       fetch = "git fetch --all --jobs=4 --progress --prune";
       git-sync = "git stash;fetch;git checkout master; git reset --hard origin/master";
+      git-sync-main = "git stash;fetch;git checkout main; git reset --hard origin/main";
       ll = "n -Hde";
       pull = "git pull --autostash --jobs=4 --summary origin";
       rebase = "git rebase --autostash --stat";
