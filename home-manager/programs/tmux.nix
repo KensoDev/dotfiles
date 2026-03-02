@@ -104,13 +104,18 @@ in {
       set-hook -g after-split-window 'setw -g monitor-activity on'
 
       # Dracula theme will handle colors and status line
-      # Differentiate active and inactive panes with background color
-      set -g "window-style" "bg=#1e1f29"
-      set -g "window-active-style" "bg=default"
+      # Differentiate active and inactive panes with dimmed foreground and background
+      set -g window-style "fg=#a0a0a0,bg=#3a3c4e"
+      set -g window-active-style "fg=#f8f8f2,bg=#282a36"
+      # Make pane borders more visible
+      set -g pane-border-style "fg=#44475a"
+      set -g pane-active-border-style "fg=#bd93f9"
 
-      # Dracula theme configuration - disable weather widget
+      # Dracula theme configuration - disable weather and battery widgets
       set -g @dracula-show-weather false
       set -g @dracula-show-battery false
+      set -g @dracula-battery-show-powerline false
+      set -g @dracula-show-powerline true
       set -g @dracula-show-left-icon session
       # enable vi keys.
       setw -g mode-keys vi
