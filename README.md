@@ -70,10 +70,10 @@ cp home-manager/programs/git-user.nix.example home-manager/programs/git-user.nix
 
 Edit `home-manager/programs/git-user.nix` with your personal information.
 
-Apply the configuration:
+Apply the configuration (replace `macbookpro-work` with your profile name):
 
 ```bash
-home-manager switch
+sudo darwin-rebuild switch --flake '.#macbookpro-work' --max-jobs auto --cores 0 --print-build-logs --show-trace
 ```
 
 ## Platform

@@ -1,8 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   # Import user-specific config (gitignored)
-  userConfig = import ./git-user.nix;
+  userConfigPath = ./git-user.nix;
+  userConfig = if builtins.pathExists userConfigPath
+    then import userConfigPath
+    else {
+      user = {
+        email = "user@example.com";
+        name = "Your Name";
+      };
+      github.user = "username";
+      includes = [];
+    };
 in
 {
   programs.git = {

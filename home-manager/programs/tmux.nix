@@ -103,17 +103,15 @@ in {
       set-hook -g after-new-window 'setw -g monitor-activity on'
       set-hook -g after-split-window 'setw -g monitor-activity on'
 
-      # Dracula theme will handle colors, but keep dim inactive panes setting
-      set -g window-style 'fg=colour247,bg=colour236'
-      set -g window-active-style 'fg=colour250,bg=black'
-      # Status line left side
-      set -g status-left-length 40
-      set -g status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=cyan]#P"
-      # Status line right side
-      # 15% | 28 Nov 18:15
-      #set -g status-right "#(~/battery Discharging) | #[fg=cyan]%d %b %R"
-      # Center the window list
-      set -g status-justify centre
+      # Dracula theme will handle colors and status line
+      # Differentiate active and inactive panes with background color
+      set -g "window-style" "bg=#1e1f29"
+      set -g "window-active-style" "bg=default"
+
+      # Dracula theme configuration - disable weather widget
+      set -g @dracula-show-weather false
+      set -g @dracula-show-battery false
+      set -g @dracula-show-left-icon session
       # enable vi keys.
       setw -g mode-keys vi
       # Open panes in the same directory using the tmux-panes script
@@ -131,8 +129,8 @@ in {
       bind P pipe-pane -o "cat >>~/#W.log" \; display "Toggled logging to ~/#W.log"
       
       
-      set-window-option -g automatic-rename off
-      set -g allow-rename on
+      set-window-option -g automatic-rename on
+      set -g allow-rename off
       set-option -g status-interval 1
       set-option -g automatic-rename on
       set-option -g automatic-rename-format '#{b:pane_current_path}'
