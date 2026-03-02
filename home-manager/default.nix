@@ -37,11 +37,14 @@
 
   programs.go = {
     enable = true;
-    goPath = "Development/language/go";
+    env = {
+      GOPATH = "$HOME/Development/language/go";
+    };
   };
 
   programs.alacritty = {
     enable = true;
+    theme = "dracula";
     settings = {
       window = {
         dimensions = {
@@ -87,16 +90,11 @@
           y = 0;
           x = 0;
         };
-      };
 
-      offset = {                            # Positioning
-        x = -1;
-        y = 0;
-      };
-
-      glyff_offset = {
-        x = 0;
-        y = 0;
+        glyph_offset = {
+          x = 0;
+          y = 0;
+        };
       };
     };
   };
@@ -147,7 +145,7 @@
       vimPlugins.telescope-nvim
 
       # theme
-      vimPlugins.catppuccin-nvim
+      vimPlugins.dracula-nvim
 
       # floaterm
       vimPlugins.vim-floaterm
@@ -205,7 +203,7 @@
       src = pkgs.customZsh.zsh-z;
     }];
 
-    initExtra = ''
+    initContent = ''
       kindc () {
         cat <<EOF | kind create cluster --config=-
       kind: Cluster

@@ -84,8 +84,9 @@ local function setup_languages()
         "html",
         "jsonls",
         "nil_ls",
+        "pyright",
         "rust_analyzer",
-        "sumneko_lua",
+        "lua_ls",
         "terraformls",
         "tsserver",
         "yamlls"
@@ -94,15 +95,20 @@ local function setup_languages()
     for _, server in pairs(lspconfig_servers) do
         local config = make_config()
 
-        if server == "sumneko_lua" then
+        if server == "lua_ls" then
             config.settings = {
                 Lua = {
                     diagnostics = { globals = { 'vim' } },
                     runtime = { version = 'LuaJIT' },
                     telemetry = { enable = false },
-                    workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+                    workspace = {
+                        library = vim.api.nvim_get_runtime_file("", true),
+                        checkThirdParty = false,
+                    },
                 }
             }
+        elseif server == "terraformls" then
+            config.cmd = { "terraform-ls", "serve" }
         end
 
         require 'lspconfig'[server].setup(config)

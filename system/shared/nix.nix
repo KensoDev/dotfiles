@@ -11,5 +11,7 @@
     options = "--delete-older-than 7d";
   };
 
-  settings = { auto-optimise-store = true; };
+  optimise = {
+    automatic = true; 
+  };
 }

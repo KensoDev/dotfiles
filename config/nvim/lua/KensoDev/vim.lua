@@ -21,6 +21,9 @@ local function set_vim_o()
 
     -- Not supported
     vim.cmd("set colorcolumn=80")
+
+    -- Reduce LSP logging to prevent large log files
+    vim.lsp.set_log_level("WARN")
 end
 
 local function set_vim_wo()

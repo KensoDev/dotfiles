@@ -8,6 +8,7 @@ vim.keymap.set('n', '<leader>fb', tb.buffers,                             vim.tb
 vim.keymap.set('n', '<leader>fh', tb.help_tags,                           vim.tbl_extend('force', opts, { desc = 'Telescope: Help tags' }))
 vim.keymap.set('n', '<leader>fd', tb.diagnostics,                         vim.tbl_extend('force', opts, { desc = 'Telescope: Diagnostics' }))
 vim.keymap.set('n', '<leader>fr', tb.registers,                           vim.tbl_extend('force', opts, { desc = 'Telescope: Registers' }))
+vim.keymap.set('n', '<leader>fj', tb.jumplist,                            vim.tbl_extend('force', opts, { desc = 'Telescope: Jumplist' }))
 
 -- LSP note: lsp_code_actions was removed; use the LSP API:
 vim.keymap.set({'n','v'}, '<leader>lsa', vim.lsp.buf.code_action,         vim.tbl_extend('force', opts, { desc = 'LSP: Code actions' }))

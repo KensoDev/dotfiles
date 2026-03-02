@@ -35,7 +35,7 @@ with pkgs; [
   go
 
   # javascript
-  yarn
+  yarn-berry
 
   # Shell utilities
   tree
@@ -51,9 +51,10 @@ with pkgs; [
   # language servers
   gopls
   nil
+  pyright  # Python LSP
 
   nodePackages."bash-language-server"
-  nodePackages."dockerfile-language-server-nodejs"
+  dockerfile-language-server
   nodePackages."graphql-language-service-cli"
   nodePackages."typescript"
   nodePackages."typescript-language-server"
@@ -61,4 +62,7 @@ with pkgs; [
   nodePackages."yaml-language-server"
   rust-analyzer
   terraform-ls
+
+  # Terminal notification support for tmux
+  terminal-notifier
 ]

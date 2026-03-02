@@ -62,15 +62,15 @@ self: super: {
   };
 
   customTmux = with self; {
-    catppuccin = pkgs.tmuxPlugins.mkTmuxPlugin {
-      pluginName = "catppuccin";
+    dracula = pkgs.tmuxPlugins.mkTmuxPlugin {
+      pluginName = "dracula";
       src = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
+        owner = "dracula";
         repo = "tmux";
-        rev = "d9e5c6d1e3b2c6f6f344f7663691c4c8e7ebeb4c";
-        sha256 = "sha256-k0nYjGjiTS0TOnYXoZg7w9UksBMLT+Bq/fJI3f9qqBg=";
+        rev = "v2.1.0";
+        sha256 = "sha256-89S8LHTx2gYWj+Ejws5f6YRQgoj0rYE7ITtGtZibl30=";
       };
-      version = "unstable-2022-09-14";
+      version = "2.1.0";
     };
   };
 

@@ -1,34 +1,30 @@
 local function setup_theme()
-  -- Theme settings
-  vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-
-  -- Load colorscheme
-  require("catppuccin").setup({
-    integrations = {
-      indent_blankline = {
-        enabled = true,
-        colored_indent_levels = true,
-      },
-      native_lsp = {
-        enabled = true,
-        virtual_text = {
-          errors = { "italic" },
-          hints = { "italic" },
-          warnings = { "italic" },
-          information = { "italic" },
-        },
-        underlines = {
-          errors = { "underline" },
-          hints = { "underline" },
-          warnings = { "underline" },
-          information = { "underline" },
-        },
-      },
+  -- Theme settings for Dracula
+  require("dracula").setup({
+    -- Show the '~' characters after the end of buffers
+    show_end_of_buffer = true,
+    -- Use transparent background
+    transparent_bg = true,
+    -- Set custom lualine background color
+    lualine_bg_color = "#44475a",
+    -- Set italic comment
+    italic_comment = true,
+    -- Overrides the default highlights
+    overrides = {
+      -- LSP virtual text styling
+      DiagnosticVirtualTextError = { italic = true },
+      DiagnosticVirtualTextWarn = { italic = true },
+      DiagnosticVirtualTextInfo = { italic = true },
+      DiagnosticVirtualTextHint = { italic = true },
+      -- LSP underline styling
+      DiagnosticUnderlineError = { underline = true },
+      DiagnosticUnderlineWarn = { underline = true },
+      DiagnosticUnderlineInfo = { underline = true },
+      DiagnosticUnderlineHint = { underline = true },
     },
-    transparent_background = true,
   })
 
-  vim.cmd [[colorscheme catppuccin]]
+  vim.cmd [[colorscheme dracula]]
 end
 
 local function init()

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-let isDarwin = pkgs.system == "x86_64-darwin";
+let isDarwin = pkgs.stdenv.hostPlatform.system == "x86_64-darwin";
 
 in {
   programs.tmux = {
@@ -38,9 +38,12 @@ in {
       # Moving between windows, gnome-terminal style
       bind -n C-PgUp select-window -t :-
       bind -n C-PgDn select-window -t :+
-      
+
       bind Right select-window -t :-
       bind Left select-window -t :+
+
+      # Direct window navigation - prompt for window number (supports 10, 11, etc.)
+      bind g command-prompt -p "Go to window:" "select-window -t '%%'"
       
       # open new window gnome-terminal style
       bind -n C-T new-window -c "#{pane_current_path}"
@@ -49,12 +52,9 @@ in {
       # move windows forward and backwards, gnome-terminal style
       bind-key -n C-S-Left swap-window -t -1
       bind-key -n C-S-Right swap-window -t +1
-      
-      # use the mouse
-      set-window-option -g mode-mouse on
-      set -g mouse-select-pane on
-      set -g mouse-resize-pane on
-      set -g mouse-select-window on
+
+      # use the mouse (modern tmux syntax)
+      set -g mouse on
       
       # use vim-bindings for copying and pasting text
       unbind [
@@ -92,30 +92,23 @@ in {
       # enable activity alerts
       setw -g monitor-activity on
       set -g visual-activity on
-      # set the status line's colors
-      set -g status-fg white
-      set -g status-bg black
-      # set the color of the window list
-      setw -g window-status-fg cyan
-      setw -g window-status-bg default
-      setw -g window-status-attr dim
-      # set colors for the active window
-      setw -g window-status-current-fg white
-      setw -g window-status-current-bg red
-      setw -g window-status-current-attr bright
-      # pane
-      set -g pane-border-fg green
-      set -g pane-border-bg black
-      set -g pane-active-border-fg white
-      set -g pane-active-border-bg yellow
-      # Command / message line
-      set -g message-fg white
-      set -g message-bg black
-      set -g message-attr bright
+      set -g bell-action any
+      set -g visual-bell off
+
+      # OSX notification support for window activity
+      set-hook -g alert-activity 'run-shell "terminal-notifier -title \"tmux: #{session_name}\" -subtitle \"Activity in window #{window_index}\" -message \"#{window_name}\" -group tmux-activity -sound default"'
+      set-hook -g alert-bell 'run-shell "terminal-notifier -title \"tmux: #{session_name}\" -subtitle \"Bell in window #{window_index}\" -message \"#{window_name}\" -group tmux-bell -sound default"'
+
+      # Also trigger notifications on any output in non-active windows
+      set-hook -g after-new-window 'setw -g monitor-activity on'
+      set-hook -g after-split-window 'setw -g monitor-activity on'
+
+      # Dracula theme will handle colors, but keep dim inactive panes setting
+      set -g window-style 'fg=colour247,bg=colour236'
+      set -g window-active-style 'fg=colour250,bg=black'
       # Status line left side
       set -g status-left-length 40
       set -g status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=cyan]#P"
-      set -g status-utf8 on
       # Status line right side
       # 15% | 28 Nov 18:15
       #set -g status-right "#(~/battery Discharging) | #[fg=cyan]%d %b %R"
@@ -152,7 +145,7 @@ in {
       new-session
     '';
 
-    plugins = with pkgs; [ customTmux.catppuccin ];
+    plugins = with pkgs; [ customTmux.dracula ];
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = if isDarwin then "screen-256color" else "xterm-256color";
   };
