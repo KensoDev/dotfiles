@@ -1,7 +1,5 @@
 # dotfiles
 
-Originally taken from https://github.com/ALT-F4-LLC/dotfiles-nixos
-
 These are my current dotfiles, built with Nix and managed with home-manager.
 
 ## What's included
@@ -73,3 +71,7 @@ home-manager switch
 ## Platform
 
 Running on macOS (darwin)
+
+## Credits
+
+Originally taken from https://github.com/ALT-F4-LLC/dotfiles-nixos
