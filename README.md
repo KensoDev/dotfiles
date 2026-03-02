@@ -62,6 +62,14 @@ Side-by-side diffs with syntax highlighting, using Nord colors and custom file l
 
 ## Setup
 
+Copy the git user config template and fill in your details:
+
+```bash
+cp home-manager/programs/git-user.nix.example home-manager/programs/git-user.nix
+```
+
+Edit `home-manager/programs/git-user.nix` with your personal information.
+
 Apply the configuration:
 
 ```bash

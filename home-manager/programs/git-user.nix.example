@@ -1,0 +1,19 @@
+{
+  # Copy this file to git-user.nix and fill in your personal details
+  # git-user.nix is gitignored and won't be committed
+
+  user = {
+    email = "your-email@example.com";
+    name = "Your Name";
+  };
+
+  github.user = "your-github-username";
+
+  includes = [
+    # Example: load different config for work repositories
+    # {
+    #   condition = "gitdir:~/Code/work/";
+    #   path = "~/.gitconfig-work";
+    # }
+  ];
+}

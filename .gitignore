@@ -1,3 +1,4 @@
 result
 .gitsecret/keys/random_seed
 !*.secret
+home-manager/programs/git-user.nix

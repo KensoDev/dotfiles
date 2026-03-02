@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
+let
+  # Import user-specific config (gitignored)
+  userConfig = import ./git-user.nix;
+in
 {
   programs.git = {
     ignores = [
@@ -17,18 +21,10 @@
 
     enable = true;
 
-    includes = [
-      {
-        condition = "gitdir:~/Code/lettuce/";
-        path = "~/.gitconfig-lettuce";
-      }
-    ];
+    includes = userConfig.includes;
 
     settings = {
-      user = {
-        email = "avi@kensodev.com";
-        name = "Avi Zurel";
-      };
+      user = userConfig.user;
 
       alias = {
         s = "status";
@@ -65,7 +61,7 @@
         colorMoved = "zebra";
       };
       fetch.prune = true;
-      github.user = "KensoDev";
+      github = userConfig.github;
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       rebase.autoStash = true;
