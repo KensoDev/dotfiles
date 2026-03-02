@@ -110,13 +110,6 @@ in {
       # Make pane borders more visible
       set -g pane-border-style "fg=#44475a"
       set -g pane-active-border-style "fg=#bd93f9"
-
-      # Dracula theme configuration - disable weather and battery widgets
-      set -g @dracula-show-weather false
-      set -g @dracula-show-battery false
-      set -g @dracula-battery-show-powerline false
-      set -g @dracula-show-powerline true
-      set -g @dracula-show-left-icon session
       # enable vi keys.
       setw -g mode-keys vi
       # Open panes in the same directory using the tmux-panes script
@@ -148,7 +141,18 @@ in {
       new-session
     '';
 
-    plugins = with pkgs; [ customTmux.dracula ];
+    plugins = with pkgs; [
+      {
+        plugin = customTmux.dracula;
+        extraConfig = ''
+          set -g @dracula-plugins "ram-usage cpu-usage network-bandwidth"
+          set -g @dracula-show-weather false
+          set -g @dracula-show-battery false
+          set -g @dracula-show-powerline true
+          set -g @dracula-show-left-icon session
+        '';
+      }
+    ];
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = if isDarwin then "screen-256color" else "xterm-256color";
   };
