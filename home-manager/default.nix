@@ -103,11 +103,13 @@
     enable = true;
     settings = {
       git = {
-        paging = {
-          colorArg = "always";
-          pager = "delta --color-only --dark --paging=never";
-          useConfig = false;
-        };
+        pagers = [
+          {
+            colorArg = "always";
+            pager = "delta --color-only --dark --paging=never";
+            useConfig = false;
+          }
+        ];
       };
     };
   };
@@ -170,6 +172,12 @@
   };
 
   programs.nnn.enable = true;
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   programs.zsh = {
     enable = true;

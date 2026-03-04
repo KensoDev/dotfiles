@@ -44,6 +44,24 @@ local function on_attach(client, bufnr)
             desc = "Clear All the References",
         })
     end
+
+    -- Show diagnostics on hover
+    vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = false })
+    vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_diagnostics_hold" }
+    vim.api.nvim_create_autocmd("CursorHold", {
+        callback = function()
+            vim.diagnostic.open_float(nil, {
+                focusable = false,
+                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                border = 'rounded',
+                source = 'always',
+                prefix = ' ',
+            })
+        end,
+        buffer = bufnr,
+        group = "lsp_diagnostics_hold",
+        desc = "Show diagnostics on hover",
+    })
 end
 
 local function make_config()
