@@ -8,6 +8,10 @@ local function setup_extras()
       vim.keymap.set('n', '<leader>gb', gs.blame_line, {buffer = bufnr, desc = 'Git blame line'})
       vim.keymap.set('n', '<leader>gB', function() gs.blame_line{full=true} end, {buffer = bufnr, desc = 'Git blame (full)'})
       vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame, {buffer = bufnr, desc = 'Toggle inline blame'})
+      vim.keymap.set('n', '<leader>gf', function()
+        local file = vim.fn.expand('%')
+        vim.cmd('vsplit | terminal git blame ' .. file)
+      end, {buffer = bufnr, desc = 'Git blame full file'})
 
       -- Hunk navigation
       vim.keymap.set('n', ']c', function()
