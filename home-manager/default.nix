@@ -293,7 +293,10 @@
         else if test -f ./.venv/bin/activate.fish
           source ./.venv/bin/activate.fish
         else
-          echo "No virtual environment found in .venv/"
+          echo "No virtual environment found in .venv/, creating one..."
+          python -m venv .venv
+          and source .venv/bin/activate.fish
+          and echo "Virtual environment created and activated!"
         end
       end
 
