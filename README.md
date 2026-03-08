@@ -5,9 +5,9 @@ These are my current dotfiles, built with Nix and managed with home-manager.
 ## What's included
 
 ### Terminal setup
-- **Alacritty** - terminal with Dracula theme
+- **Ghostty** - terminal with Dracula theme (installed externally, configured via Nix)
 - **Tmux** - prefix set to C-s, using gnome-terminal style window navigation
-- **Zsh** - oh-my-zsh with robbyrussell theme, custom shell functions
+- **Fish** - custom robbyrussell-style prompt with z plugin
 
 ### Development tools
 - **Neovim** - LSP, treesitter, telescope, Dracula theme
@@ -17,8 +17,6 @@ These are my current dotfiles, built with Nix and managed with home-manager.
 
 ### Utilities
 - bat (catppuccin theme)
-- bottom
-- nnn
 - httpie
 - ngrok
 - ack
@@ -56,25 +54,32 @@ Side-by-side diffs with syntax highlighting, using Nord colors and custom file l
 
 ### Shell aliases
 - `cat` → bat
-- `ll` → nnn
 - `git` → hub
 - Custom git workflows: `git-sync`, `git-sync-main`, `fetch`, `update`
 
 ## Setup
 
-Copy the git user config template and fill in your details:
+### 1. Configure git user information
+
+Copy the git user config template to `~/.config/` and fill in your details:
 
 ```bash
-cp home-manager/programs/git-user.nix.example home-manager/programs/git-user.nix
+cp home-manager/programs/git-user.nix.example ~/.config/git-user.nix
 ```
 
-Edit `home-manager/programs/git-user.nix` with your personal information.
+Edit `~/.config/git-user.nix` with your personal information (name, email, GitHub username).
 
-Apply the configuration (replace `macbookpro-work` with your profile name):
+**Why ~/.config?** The git user config is stored outside the flake directory to keep your personal information private and prevent it from being committed to the repository. Nix flakes only include git-tracked files by default, so storing secrets outside the flake is the standard pattern for machine-specific configuration.
+
+### 2. Apply the configuration
+
+Replace `macbookpro-work` with your profile name:
 
 ```bash
-sudo darwin-rebuild switch --flake '.#macbookpro-work' --max-jobs auto --cores 0 --print-build-logs --show-trace
+sudo darwin-rebuild switch --flake '.#macbookpro-work' --impure
 ```
+
+**Why --impure?** Nix flakes run in pure evaluation mode by default, which restricts access to files outside the flake directory. The `--impure` flag allows Nix to read your git user config from `~/.config/git-user.nix`. This is necessary for importing machine-specific secrets that should not be tracked in git.
 
 ## Platform
 

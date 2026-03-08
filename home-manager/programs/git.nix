@@ -1,8 +1,9 @@
 { pkgs, lib, ... }:
 
 let
-  # Import user-specific config (gitignored)
-  userConfigPath = ./git-user.nix;
+  # Import user-specific config from outside flake
+  # This is the Nix-native way to handle secrets - keep them outside the flake boundary
+  userConfigPath = /Users/azurel/.config/git-user.nix;
   userConfig = if builtins.pathExists userConfigPath
     then import userConfigPath
     else {

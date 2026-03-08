@@ -1,6 +1,7 @@
 {
-  # Copy this file to git-user.nix and fill in your personal details
-  # git-user.nix is gitignored and won't be committed
+  # Copy this file to ~/.config/git-user.nix and fill in your personal details
+  # Keeping secrets outside the flake is the Nix-native way to handle private config
+  # The flake imports this file using an absolute path, bypassing git tracking
 
   user = {
     email = "your-email@example.com";

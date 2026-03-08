@@ -26,6 +26,9 @@ with pkgs; [
   # git
   hub
 
+  # docker
+  lazydocker
+
   #python
   python312
   python312Packages.pip
@@ -39,6 +42,7 @@ with pkgs; [
 
   # Shell utilities
   tree
+  fish
 
   # Custom programs
   hugo
