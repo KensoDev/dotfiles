@@ -33,6 +33,7 @@ with pkgs; [
   python312
   python312Packages.pip
   python312Packages.uv
+  python312Packages.bump2version
 
   # go
   go
@@ -46,6 +47,7 @@ with pkgs; [
 
   # Custom programs
   hugo
+  customBin.gong
 
   customBin.reattach-to-user-namespace
 

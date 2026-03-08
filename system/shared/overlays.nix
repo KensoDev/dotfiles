@@ -1,15 +1,15 @@
 self: super: {
   customBin = with self; {
     gong = pkgs.stdenv.mkDerivation {
-      name = "gong";
+      name = "gong-2.5.0";
       src = pkgs.fetchurl {
-        url = "https://github.com/KensoDev/gong/releases/download/1.7.0/gong_darwin_amd64";
-        sha256 = "1gdgwj700sm0xvgc7iga45ayxc40bx9gkrkcy933szccvi43nk44";
+        url = "https://github.com/KensoDev/gong/releases/download/v2.5.0/gong_2.5.0_Darwin_arm64.tar.gz";
+        sha256 = "02k2jxi8kk1sj01b5kh4dbw00dfx0fmdvlyv2chwfjpk8v1f262c";
       };
-      phases = ["installPhase" "patchPhase"];
+      sourceRoot = ".";
       installPhase = ''
         mkdir -p $out/bin
-        cp $src $out/bin/gong
+        cp gong $out/bin/gong
         chmod +x $out/bin/gong
       '';
     };
