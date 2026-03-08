@@ -10,7 +10,7 @@ in {
       #
       # Setting the prefix from C-b to C-s
       set -g prefix C-a
-      set-option -g default-command "reattach-to-user-namespace -l zsh"
+      set-option -g default-command "reattach-to-user-namespace -l fish"
       
       # Free the original Ctrl-b prefix keybinding
       unbind C-b
@@ -156,7 +156,7 @@ in {
         '';
       }
     ];
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.fish}/bin/fish";
     terminal = if isDarwin then "screen-256color" else "xterm-256color";
   };
 }

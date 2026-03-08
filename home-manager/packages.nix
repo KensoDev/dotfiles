@@ -24,7 +24,7 @@ with pkgs; [
   yt-dlp
 
   # git
-  hub
+  gh
 
   # docker
   lazydocker

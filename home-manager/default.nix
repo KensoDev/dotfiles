@@ -272,7 +272,6 @@
       secrets = ''doppler run --project "(whoami)"'';
       update = "fetch && rebase";
       wt = "git worktree";
-      git = "hub";
       dev = "nix develop . -c $SHELL";
       develop = "nix develop . -c $SHELL";
     };
@@ -349,7 +348,6 @@
       secrets = ''doppler run --project "$(whoami)"'';
       update = "fetch && rebase";
       wt = "git worktree";
-      git = "hub";
       dev = "nix develop . -c $SHELL";
       develop = "nix develop . -c $SHELL";
     };
